@@ -18,7 +18,12 @@ defmodule ElixirBlogWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    resources "/posts", PostController do
+      post "/comment", PostController, :add_comment
+    end
   end
+
+  # resources "/posts", ElixirBlogWeb.PostController
 
   # Other scopes may use custom stacks.
   # scope "/api", ElixirBlogWeb do
