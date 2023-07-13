@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :elixir_blog, ElixirBlog.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("DATABASE_USERNAME"),
+  password: System.get_env("DATABASE_PASSWORD"),
   hostname: "localhost",
   database: "elixir_blog_dev",
   stacktrace: true,

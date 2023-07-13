@@ -35,3 +35,7 @@ elixir_blog-*.tar
 npm-debug.log
 /assets/node_modules/
 
+.env
+
+# If you use VSCode
+.history
