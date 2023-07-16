@@ -6,6 +6,7 @@ defmodule ElixirBlog.Posts do
   import Ecto.Query, warn: false
   alias ElixirBlog.Repo
 
+  alias ElixirBlog.Posts
   alias ElixirBlog.Posts.Post
   alias ElixirBlog.Comments
 
@@ -107,5 +108,10 @@ defmodule ElixirBlog.Posts do
     comment_params
     |> Map.put("post_id", post_id)
     |> Comments.create_comment()
+  end
+
+  def get_number_of_comments(post_id) do
+    post = Posts.get_post!(post_id) |> Repo.preload([:comments])
+    Enum.count(post.comments)
   end
 end
