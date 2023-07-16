@@ -10,6 +10,7 @@
 <.table id="posts" rows={@posts} row_click={&JS.navigate(~p"/posts/#{&1}")}>
   <:col :let={post} label="Title"><%= post.title %></:col>
   <:col :let={post} label="Body"><%= post.body %></:col>
+  <:col :let={post} label="Author"><%= post.user.id %></:col>
   <:col :let={post} label="# of Comments"><%= get_comments_count(post.id) %></:col>
   <:action :let={post}>
     <div class="sr-only">

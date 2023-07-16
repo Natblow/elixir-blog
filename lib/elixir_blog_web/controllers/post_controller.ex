@@ -8,16 +8,23 @@ defmodule ElixirBlogWeb.PostController do
   alias ElixirBlog.Comments.Comment
 
   def index(conn, _params) do
-    posts = Posts.list_posts()
+    posts =
+      Posts.list_posts()
+      |> Repo.preload([:user])
+
     render(conn, :index, posts: posts)
   end
 
   def new(conn, _params) do
-    changeset = Posts.change_post(%Post{})
+    current_user = conn.assigns.current_user
+    changeset = Posts.change_post(%Post{user_id: current_user.id})
     render(conn, :new, changeset: changeset)
   end
 
   def create(conn, %{"post" => post_params}) do
+    current_user = conn.assigns.current_user
+    post_params = Map.put(post_params, "user_id", current_user.id)
+
     case Posts.create_post(post_params) do
       {:ok, post} ->
         conn
