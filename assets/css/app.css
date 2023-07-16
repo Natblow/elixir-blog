@@ -3,3 +3,16 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+.comments {
+    padding-bottom: 2em;
+  }
+  .comment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5em;
+    border-bottom: 1px solid lightgrey;
+  }
+  .comment.header {
+    font-weight: bold;
+  }

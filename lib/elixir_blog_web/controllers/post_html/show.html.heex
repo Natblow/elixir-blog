@@ -13,6 +13,10 @@
   <:item title="Body"><%= @post.body %></:item>
 </.list>
 
+<br/>
+
+<.comments comments={@comments} />
+
 <.comment_form changeset={@changeset} action={~p"/posts/#{@post}/comments"}/>
 
 <.back navigate={~p"/posts"}>Back to posts</.back>

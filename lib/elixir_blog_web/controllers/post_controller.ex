@@ -54,7 +54,7 @@ defmodule ElixirBlogWeb.PostController do
       |> Repo.preload([:comments])
 
     changeset = Comment.changeset(%Comment{}, %{})
-    render(conn, :show, post: post, changeset: changeset)
+    render(conn, :show, post: post, comments: post.comments, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
