@@ -7,7 +7,7 @@ defmodule ElixirBlog.Posts do
   alias ElixirBlog.Repo
 
   alias ElixirBlog.Posts.Post
-  alias ElixirBlog.Comments.Comment
+  alias ElixirBlog.Comments
 
   @doc """
   Returns the list of posts.
